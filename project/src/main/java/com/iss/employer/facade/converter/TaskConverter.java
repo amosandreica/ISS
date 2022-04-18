@@ -13,7 +13,7 @@ public class TaskConverter {
 
     public Task convertTaskDtoToTask(TaskDto taskDto) {
         Task task = new Task();
-        task.setId(taskDto.getId());
+        //task.setId(taskDto.getId());
         task.setTitle(taskDto.getTitle());
         task.setDescription(taskDto.getDescription());
         task.setStatus(TaskStatus.PENDING);
