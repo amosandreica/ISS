@@ -9,10 +9,7 @@
 <%@ attribute name="task" type="com.iss.employer.facade.dto.TaskDto" required="true" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:url var="detailsUrl" value="/admin/accounts/"/>
-<c:url var="deleteUrl" value="/admin/accounts/delete/"/>
-<c:url var="updateUrl" value="/admin/accounts/update/"/>
-<c:url var="addTaskUrl" value="/admin/tasks/add/"/>
+<c:url var="updateUrl" value="/employee/tasks/update/"/>
 
 <div class="card m-2" style="width: 18rem;">
     <div class="card-body">
@@ -28,6 +25,12 @@
                         status: <b style="color:red;">DONE</b>
                     </c:otherwise>
                 </c:choose>
+                <form:form method="post" action="${updateUrl}${task.id}">
+                    <button style="border-radius: 0" type="submit" class="btn btn-secondary"
+                            onclick="return confirm('You are about to change the status to DONE. Are you sure?')">
+                        Mark as Done
+                    </button>
+                </form:form>
             </h></div>
             <div><h>description: ${task.description}</h></div>
         </div>

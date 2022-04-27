@@ -35,8 +35,10 @@ public class TasksController {
             return "404";
         }
         TaskDto task = new TaskDto();
-        task.setAssignee(optionalUser.get());
+        UserDto assignee = optionalUser.get();
+        task.setAssignee(assignee);
         model.addAttribute("task", task);
+        model.addAttribute("selected", assignee.getId());
         model.addAttribute("users", userFacade.findAllEmployees());
         return "admin/addTask";
     }
@@ -44,7 +46,7 @@ public class TasksController {
     @GetMapping("/add")
     public String submit(@ModelAttribute("task") TaskDto task) {
         taskFacade.save(task);
-        return "admin/tasks";
+        return "redirect:/admin/tasks/";
     }
 
 }

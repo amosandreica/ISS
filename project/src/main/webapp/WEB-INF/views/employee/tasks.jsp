@@ -24,7 +24,7 @@
 
     <div class="d-flex mt-5">
         <c:forEach var="task" items="${tasks}" >
-            <common:taskCard task="${task}"/>
+            <common:taskCardEmployee task="${task}"/>
         </c:forEach>
     </div>
 

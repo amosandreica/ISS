@@ -21,7 +21,7 @@
             <div><h>assignee: ${task.assignee.firstName} ${task.assignee.lastName}</h></div>
             <div><h>
                 <c:choose>
-                    <c:when test="${user.status == 'ONLINE'}">
+                    <c:when test="${task.status == 'PENDING'}">
                         status: <b style="color:darkgreen;">PENDING</b>
                     </c:when>
                     <c:otherwise>

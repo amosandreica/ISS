@@ -1,6 +1,7 @@
 package com.iss.employer.facade.impl;
 
 import com.iss.employer.core.model.Task;
+import com.iss.employer.core.model.TaskStatus;
 import com.iss.employer.core.model.User;
 import com.iss.employer.core.service.TaskService;
 import com.iss.employer.facade.TaskFacade;
@@ -46,7 +47,7 @@ public class DefaultTaskFacade implements TaskFacade {
 
     @Override
     public boolean save(TaskDto entity) {
-
+        entity.setStatus(TaskStatus.PENDING);
         return taskService.save(taskConverter.convertTaskDtoToTask(entity));
     }
 
@@ -62,6 +63,7 @@ public class DefaultTaskFacade implements TaskFacade {
 
     @Override
     public boolean update(TaskDto entity) {
+        entity.setStatus(TaskStatus.DONE);
         return taskService.update(taskConverter.convertTaskDtoToTask(entity));
     }
 }

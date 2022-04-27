@@ -45,7 +45,14 @@
                         <form:label path="assignee">Select an employee:&nbsp;&nbsp;&nbsp;</form:label>
                         <form:select path="assignee.id" >
                             <c:forEach items="${users}" var="user">
-                                <form:option value="${user.id}" selected="${task.assignee.id == user.id ? 'true' : 'false'}">${user.firstName} ${user.lastName}</form:option>
+                                <c:choose>
+                                    <c:when test="${user.id == selected}">
+                                        <form:option value="${user.id}" selected='true'>${user.firstName} ${user.lastName}</form:option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <form:option value="${user.id}">${user.firstName} ${user.lastName}</form:option>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
                         </form:select>
                     </div>
